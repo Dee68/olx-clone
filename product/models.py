@@ -1,5 +1,6 @@
 from django.db import models
 from mptt.models import MPTTModel, TreeForeignKey
+from .managers import CategoryManager
 from account.models import User
 from django.utils.safestring import mark_safe
 
@@ -34,9 +35,11 @@ class Category(MPTTModel):
   
     class MPTTModel:
         order_insertion_by = ['title']
+
+    objects = CategoryManager()
  
     def __str__(self):
-        return self.title
+        return str(self.title)
 
 
 class Product(models.Model):
