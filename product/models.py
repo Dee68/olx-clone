@@ -17,7 +17,7 @@ class Category(MPTTModel):
         null=True,
         upload_to='images/category/'
         )
-    slug = models.SlugField(max_length=200)
+    slug = models.SlugField(max_length=200, unique=True)
     parent = TreeForeignKey(
             'self',
             blank=True,

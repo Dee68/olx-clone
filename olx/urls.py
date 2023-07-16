@@ -18,7 +18,6 @@ from django.urls import path, include
 from product.views import (
     CategoryApiView,
     CategorySingleApiView,
-    ParentCategoryListView,
     ProductApiView
     )
 
@@ -30,14 +29,9 @@ urlpatterns = [
         name='categories'
         ),
     path(
-        'categories/<str:pk>/',
+        'categories/<str:slug>/',
         CategorySingleApiView.as_view(),
         name='category'
-        ),
-    path(
-        'parents/',
-        ParentCategoryListView.as_view(),
-        name='parent-category'
         ),
     path('products/', ProductApiView.as_view(), name='products')
 ]

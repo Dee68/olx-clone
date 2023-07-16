@@ -14,16 +14,9 @@ class CategoryApiView(views.APIView):
         return Response(serializer.data)
 
 
-class ParentCategoryListView(views.APIView):
-    def get(self, request, *args):
-        parents = Category.objects.parentsonly()
-        serializer = CategorySerializer(parents, many=True)
-        return Response(serializer.data)
-
-
 class CategorySingleApiView(views.APIView):
-    def get(self, request, pk):
-        category = Category.objects.get(id=pk)
+    def get(self, request, slug):
+        category = Category.objects.get(slug=slug)
         serializer = CategorySerializer(category, many=False)
         return Response(serializer.data)
 
