@@ -7,7 +7,7 @@ from product.models import Category, Product
 
 class CategoryApiView(views.APIView):
 
-    def get(self, request, *args, **kwargs):
+    def get(self, request):
         queryset = Category.objects.viewable()
         serializer = CategorySerializer(queryset, many=True)
         return Response(serializer.data)
